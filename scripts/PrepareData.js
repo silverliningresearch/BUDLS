@@ -60,7 +60,8 @@ function initCurrentTimeVars() {
         total_quota = 1500;
         break;     
 
-    case "2025-Q4":      
+    case "2025-Q4":   
+	case "2026-Q1": 	
         total_quota = 1500;
         break;           
 
@@ -288,6 +289,73 @@ function prepareInterviewData() {
             }
         }
 
+                //correction for EZS / EC
+        if (currentQuarter == "2026-Q2") 
+        {
+
+            if ((interview.Airport_Airline == "BSL-EZS") 
+              || (interview.Airport_Airline == "BSL-EJU")
+              || (interview.Airport_Airline == "BSL-EZY"))
+            {
+                interview.Airport_Airline = "BSL-EC";
+            }
+
+            if ((interview.Airport_Airline == "CDG-EZS") 
+              || (interview.Airport_Airline == "CDG-EJU")
+              || (interview.Airport_Airline == "CDG-EZY"))
+            {
+                interview.Airport_Airline = "CDG-EC";
+            }
+
+            if ((interview.Airport_Airline == "GVA-EZS") 
+              || (interview.Airport_Airline == "GVA-EJU")
+              || (interview.Airport_Airline == "GVA-EZY"))
+            {
+                interview.Airport_Airline = "GVA-EC";
+            }
+
+            if ((interview.Airport_Airline == "LGW-EZS") 
+              || (interview.Airport_Airline == "LGW-EJU")
+              || (interview.Airport_Airline == "LGW-EZY"))
+            {
+                interview.Airport_Airline = "LGW-EC";
+            }
+
+          if ((interview.Airport_Airline == "LYS-EZS") 
+              || (interview.Airport_Airline == "LYS-EJU")
+              || (interview.Airport_Airline == "LYS-EZY"))
+            {
+                interview.Airport_Airline = "LYS-EC";
+            }
+  
+            if (interview.Airport_Airline == "EDI-RK") 
+            {
+                interview.Airport_Airline = "EDI-FR";
+            }   
+            if (interview.Airport_Airline == "MAN-RK") 
+            {
+                interview.Airport_Airline = "MAN-FR";
+            }           
+            if (interview.Airport_Airline == "STN-RK") 
+            {
+                interview.Airport_Airline = "STN-FR";
+            }  
+            if (interview.Airport_Airline == "BFS-RK") 
+            {
+                interview.Airport_Airline = "BFS-FR";
+            }      
+            
+            if ((interview.Airport_Airline == "BOD-EJU") )
+            {
+                interview.Airport_Airline = "BOD-EC";
+            }
+            
+            if ((interview.Airport_Airline == "NTE-EJU") )
+            {
+                interview.Airport_Airline = "NTE-EC";
+            }
+        }
+
         interview_data.push(interview);
       }
       else{
@@ -355,7 +423,7 @@ function prepareInterviewData() {
        }
     }
   }
-  // console.log("today_flight_list: ", today_flight_list);
+  console.log("today_flight_list: ", today_flight_list);
   // console.log("quota_data: ", quota_data);
   // console.log("daily_plan_data: ", daily_plan_data);
 }
